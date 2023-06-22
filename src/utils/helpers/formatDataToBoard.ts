@@ -7,11 +7,11 @@ export const formatDataToBoard = (data: DocumentFromApi[]) => {
     if (!acc.get(todos.status)) {
       acc.set(todos.status, {
         id: todos.status,
-        todos: [],
+        todo: [],
       });
     }
 
-    acc.get(todos.status)!.todos.push({
+    acc.get(todos.status)!.todo.push({
       $id: todos.$id,
       $createdAt: todos.$createdAt,
       status: todos.status,
@@ -23,16 +23,16 @@ export const formatDataToBoard = (data: DocumentFromApi[]) => {
   }, new Map<TypedColumn, Column>());
 
   const columnTypes: TypedColumn[] = [
-    TypedColumn.done,
-    TypedColumn.inprogress,
     TypedColumn.todo,
+    TypedColumn.inprogress,
+    TypedColumn.done,
   ];
 
   for (const columnType of columnTypes) {
     if (!columns.get(columnType)) {
       columns.set(columnType, {
         id: columnType,
-        todos: [],
+        todo: [],
       });
     }
   }

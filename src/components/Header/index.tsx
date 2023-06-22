@@ -7,10 +7,13 @@ import { MagnifyingGlassIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 
 import logo from "~/assets/logo.svg";
 import Avatar from "react-avatar";
+import { useBoardStore } from "~/store";
 
 type Props = {};
 
 const Header: FC<Props> = () => {
+  const { searchString, setSearchString } = useBoardStore();
+
   return (
     <header>
       <div className="flex flex-col md:flex-row items-center p-5 bg-gray-500/10 rounded-b-2xl">
@@ -31,6 +34,8 @@ const Header: FC<Props> = () => {
               type="text"
               className="flex-1 outline-none p-2"
               placeholder="Search"
+              value={searchString}
+              onChange={(e) => setSearchString(e.target.value)}
             />
             <button hidden>Submit</button>
           </form>

@@ -6,10 +6,10 @@ export interface Board {
 
 export interface Column {
   id: TypedColumn;
-  todos: Todos[];
+  todo: Todo[];
 }
 
-export interface Todos {
+export interface Todo {
   $id: string;
   $createdAt: string;
   title: string;

@@ -2,7 +2,7 @@ const BASE_URL = `${process.env.NEXT_PUBLIC_INTERNAL_URL}/api`;
 
 export const client = {
   get: async <T = any>(input: RequestInfo, init?: RequestInit) => {
-    const res = await fetch(`${BASE_URL}/${input}`, {
+    const res = await fetch(`${BASE_URL}${input}`, {
       ...init,
     });
 
@@ -30,6 +30,10 @@ export const client = {
   put: async <T = any>(input: RequestInfo, init?: RequestInit) => {
     const res = await fetch(`${BASE_URL}${input}`, {
       ...init,
+      headers: {
+        ...init?.headers,
+        "Content-Type": "application/json",
+      },
       method: "PUT",
     });
 
@@ -56,6 +60,10 @@ export const client = {
   delete: async <T = any>(input: RequestInfo, init?: RequestInit) => {
     const res = await fetch(`${BASE_URL}${input}`, {
       ...init,
+      headers: {
+        ...init?.headers,
+        "Content-type": "application/json",
+      },
       method: "DELETE",
     });
 
