@@ -3,9 +3,9 @@
 import React, { useCallback, useEffect } from "react";
 
 import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
-import { Column } from "~/components";
 import { useBoardStore } from "~/store";
 import { Column as ColumnType } from "~/utils/types";
+import Column from "./Column";
 
 function Board() {
   const { getBoard, board, setBoardState, updateTodoInDB } = useBoardStore();

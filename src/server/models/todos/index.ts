@@ -13,7 +13,12 @@ export interface DocumentFromApi {
   $id: string;
   $permissions: string[];
   $updatedAt: string;
-  image?: Image;
+  image?: File | null;
   status: TypedColumn;
   title: string;
+}
+
+export interface ImageFromApi {
+  $id: string;
+  bucketId: string;
 }

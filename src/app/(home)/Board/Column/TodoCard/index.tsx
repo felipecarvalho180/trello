@@ -16,14 +16,9 @@ interface Props {
   dragHandleProps?: DraggableProvidedDragHandleProps | null;
 }
 
-function TodoCard({
-  todo,
-  draggableProps,
-  id,
-  index,
-  innerRef,
-  dragHandleProps,
-}: Props) {
+function TodoCard({ todo, draggableProps, innerRef, dragHandleProps }: Props) {
+  console.log(todo);
+
   return (
     <div
       {...dragHandleProps}

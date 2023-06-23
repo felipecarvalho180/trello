@@ -16,7 +16,10 @@ export const client = {
   post: async <T = any>(input: RequestInfo, init?: RequestInit) => {
     const res = await fetch(`${BASE_URL}${input}`, {
       ...init,
-
+      headers: {
+        ...init?.headers,
+        "Content-Type": "application/json",
+      },
       method: "POST",
     });
 
@@ -47,6 +50,10 @@ export const client = {
   patch: async <T = any>(input: RequestInfo, init?: RequestInit) => {
     const res = await fetch(`${BASE_URL}${input}`, {
       ...init,
+      headers: {
+        ...init?.headers,
+        "Content-Type": "application/json",
+      },
       method: "PATCH",
     });
 
