@@ -16,10 +16,6 @@ export const client = {
   post: async <T = any>(input: RequestInfo, init?: RequestInit) => {
     const res = await fetch(`${BASE_URL}${input}`, {
       ...init,
-      headers: {
-        ...init?.headers,
-        "Content-Type": "application/json",
-      },
       method: "POST",
     });
 
@@ -33,10 +29,6 @@ export const client = {
   put: async <T = any>(input: RequestInfo, init?: RequestInit) => {
     const res = await fetch(`${BASE_URL}${input}`, {
       ...init,
-      headers: {
-        ...init?.headers,
-        "Content-Type": "application/json",
-      },
       method: "PUT",
     });
 
@@ -50,10 +42,6 @@ export const client = {
   patch: async <T = any>(input: RequestInfo, init?: RequestInit) => {
     const res = await fetch(`${BASE_URL}${input}`, {
       ...init,
-      headers: {
-        ...init?.headers,
-        "Content-Type": "application/json",
-      },
       method: "PATCH",
     });
 
@@ -67,10 +55,6 @@ export const client = {
   delete: async <T = any>(input: RequestInfo, init?: RequestInit) => {
     const res = await fetch(`${BASE_URL}${input}`, {
       ...init,
-      headers: {
-        ...init?.headers,
-        "Content-type": "application/json",
-      },
       method: "DELETE",
     });
 

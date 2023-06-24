@@ -13,7 +13,7 @@ export interface DocumentFromApi {
   $id: string;
   $permissions: string[];
   $updatedAt: string;
-  image?: File | null;
+  image?: string | null;
   status: TypedColumn;
   title: string;
 }
@@ -21,4 +21,10 @@ export interface DocumentFromApi {
 export interface ImageFromApi {
   $id: string;
   bucketId: string;
+}
+
+export interface AddTodoParams {
+  title: string;
+  columnId: TypedColumn;
+  image?: File | null;
 }

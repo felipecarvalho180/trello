@@ -30,11 +30,20 @@ export async function PUT(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const body: { title: string; columnId: TypedColumn; image?: Image | null } =
-    await req.json();
-
   try {
-    await addTodoServer(body.title, body.columnId, body.image);
+    const body = await req.formData();
+
+    const values: { [key: string]: any } = {};
+
+    for (const [key, value] of body.entries()) {
+      values[key] = value;
+    }
+
+    await addTodoServer({
+      title: values.title,
+      columnId: values.columnId,
+      image: values.image,
+    });
 
     return NextResponse.json({ ok: true });
   } catch (error) {

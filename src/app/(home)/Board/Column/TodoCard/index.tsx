@@ -1,4 +1,5 @@
 import { XCircleIcon } from "@heroicons/react/24/solid";
+import Image from "next/image";
 import React from "react";
 import {
   DraggableProvidedDragHandleProps,
@@ -18,7 +19,6 @@ interface Props {
 
 function TodoCard({ todo, draggableProps, innerRef, dragHandleProps }: Props) {
   console.log(todo);
-
   return (
     <div
       {...dragHandleProps}
@@ -32,6 +32,18 @@ function TodoCard({ todo, draggableProps, innerRef, dragHandleProps }: Props) {
           <XCircleIcon className="ml-5 h-8 w-8" />
         </button>
       </div>
+
+      {todo.image && (
+        <div className="w-full h-[200px] overflow-hidden rounded-b-md">
+          <Image
+            src={`data:image/png;base64,${todo.image}`}
+            alt="Task Image"
+            width={400}
+            height={200}
+            className="w-full object-contain rounded-b-md"
+          />
+        </div>
+      )}
     </div>
   );
 }

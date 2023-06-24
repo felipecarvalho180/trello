@@ -1,9 +1,8 @@
 import { Todo } from "~/utils/types";
 import { client } from "../config";
 import { TypedColumn } from "~/utils/enums";
-import { formatFileToString } from "~/utils/helpers";
-import { uploadImage } from "~/server/appwrite/todos";
-import { formatToImage } from "~/server/mappers/todos";
+import { AddTodoParams } from "~/server/models/todos";
+import { objectToFormData } from "~/utils/helpers";
 
 export const getTodoGroupedByColumn = async () => {
   const data = await client.get("/todos");
@@ -26,27 +25,12 @@ export const updateTodo = async (card: Todo, columnId: TypedColumn) => {
   }
 };
 
-export const addTodo = async (
-  title: string,
-  columnId: TypedColumn,
-  image?: File | null
-) => {
+export const addTodo = async (params: AddTodoParams) => {
   try {
-    let file = null;
-    if (image) {
-      const fileUploaded = await uploadImage(image);
-
-      if (fileUploaded) {
-        file = formatToImage(fileUploaded);
-      }
-    }
+    const formData = objectToFormData(params);
 
     await client.post("/todos", {
-      body: JSON.stringify({
-        title,
-        columnId,
-        image: file,
-      }),
+      body: formData,
     });
 
     return;

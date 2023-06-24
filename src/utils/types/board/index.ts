@@ -14,7 +14,7 @@ export interface Todo {
   $createdAt: string;
   title: string;
   status: string;
-  image?: Image;
+  image?: string;
 }
 
 export interface Image {

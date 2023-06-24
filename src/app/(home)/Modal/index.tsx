@@ -41,7 +41,7 @@ export default function Modal() {
 
     try {
       setLoading(true);
-      await addTodo(newTaskInput, todoType, image);
+      await addTodo({ title: newTaskInput, columnId: todoType, image });
       await getBoard();
 
       setImage(null);
@@ -142,6 +142,7 @@ export default function Modal() {
                   <input
                     type="file"
                     ref={imagePickerRef}
+                    accept="image/jpeg, image/png"
                     hidden
                     onChange={handlePickImage}
                   />

@@ -1,2 +1,2 @@
 export * from "./formatDataToBoard";
-export * from "./formatFileToString";
+export * from "./objectToFormData";
